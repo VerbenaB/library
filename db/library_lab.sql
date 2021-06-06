@@ -9,10 +9,9 @@ CREATE TABLE authors (
 CREATE TABLE books (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
-    author_id INT REFERENCES authors(id),
     genre VARCHAR(255),
     publisher VARCHAR(255),
-    available BOOLEAN 
+    available BOOLEAN ,
+    author_id INT REFERENCES authors(id)
 );
 
-SELECT * FROM authors;

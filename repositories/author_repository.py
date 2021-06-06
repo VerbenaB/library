@@ -20,23 +20,18 @@ def select_all():
 
     return authors
     
+   
+def delete_all():
+    sql = "DELETE FROM authors"
+    run_sql(sql)
+
 def select(id):
     author = None
     sql = "SELECT * FROM authors WHERE id = %s"
     values = [id]
-    results = run_sql(sql,values)
+    result = run_sql(sql,values)
 
-    if len(results) > 0 :
-        result = results[0]
-        first_name = result['first_name']
-        last_name = result['last_name']
-        id = result['id']  
-        author = Author(first_name,last_name,id)
-        
+    if len(result) > 0:
+        author_dict = result[0]
+        author = Author(author_dict['first_name'], author_dict['last_name'], author_dict['id'])   
     return author   
-    
-
-
-def delete_all():
-    sql = "DELETE FROM authors"
-    run_sql(sql)
