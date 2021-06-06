@@ -58,7 +58,7 @@ def update_book(id):
     # create a book object form the data
     author = author_repository.select(author_id)
     new_book = Book(title, author, genre, publisher, available)
-    book_repository.update(update_book)
+    book_repository.update(new_book)
     return redirect("/books")
 
 
